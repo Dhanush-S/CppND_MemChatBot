@@ -48,25 +48,81 @@ ChatBot::~ChatBot()
 //Copy constructor
 ChatBot::ChatBot(const ChatBot &source)
 {
-    
+    std::cout << "ChatBot Copy Constructor" << std::endl;
+
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
+
+    //Deep copy of the image
+    _image = new wxBitmap();
+    *_image = *(source._image); 
 }
 
 //Assignment operator
-ChatBot::ChatBot &operator= (const ChatBot &source)
+ChatBot &ChatBot::operator= (const ChatBot &source)
 {
+    std::cout << "ChatBot Assignment" << std::endl;
 
+    //Return instance of this class on self assignment
+    if(this == &source)
+        return *this;
+
+    //Delete the already assigned image 
+    //The object will be created using Copy Constructor or Constructor with Memory allocation
+    delete _image;
+
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
+
+    //Deep copy of the image
+    _image = new wxBitmap();
+    *_image = *(source._image); 
+
+    return *this;
 }
 
 //Move constructor
-ChatBot::ChatBot(ChatBot &&sorce)
+ChatBot::ChatBot(ChatBot &&source)
 {
+    std::cout << "ChatBot Move Constructor" << std::endl;
+    //Re-direct all handles
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
 
+    //Re-direct to the source image
+    _image = source._image;
+
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._currentNode = nullptr;
+    source._image = NULL;
 }
 
 //Move assignment
-ChatBot &operator=(ChatBot &&source)
+ChatBot &ChatBot::operator=(ChatBot &&source)
 {
+    std::cout << "ChatBot Move Assignment" << std::endl;
 
+    if(this == &source)
+        return *this;
+    
+    delete _image;
+
+    //Re-direct all handles
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
+
+    //Re-direct to the source image
+    _image = source._image;
+
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._currentNode = nullptr;
+    source._image = NULL;
 }
 ////
 //// EOF STUDENT CODE
