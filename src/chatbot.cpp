@@ -45,6 +45,29 @@ ChatBot::~ChatBot()
 //// STUDENT CODE
 ////
 
+//Copy constructor
+ChatBot::ChatBot(const ChatBot &source)
+{
+    
+}
+
+//Assignment operator
+ChatBot::ChatBot &operator= (const ChatBot &source)
+{
+
+}
+
+//Move constructor
+ChatBot::ChatBot(ChatBot &&sorce)
+{
+
+}
+
+//Move assignment
+ChatBot &operator=(ChatBot &&source)
+{
+
+}
 ////
 //// EOF STUDENT CODE
 

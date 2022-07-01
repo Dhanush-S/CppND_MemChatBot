@@ -11,7 +11,8 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    delete _chatBot; 
+    //Memory for _chatBot is allocated in chatLogic and thus chatLogic instance should free the memory 
+    //delete _chatBot; 
 
     ////
     //// EOF STUDENT CODE
