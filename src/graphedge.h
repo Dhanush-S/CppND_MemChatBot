@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <string>
+#include <memory>
+#include <iostream>
 
 class GraphNode; // forward declaration
 
@@ -21,6 +23,11 @@ private:
 public:
     // constructor / desctructor
     GraphEdge(int id);
+    ~GraphEdge();                                   // destructor
+    GraphEdge(const GraphEdge &source);             // copy constructor
+    GraphEdge &operator=(const GraphEdge &source);  // assignment operator
+    GraphEdge(GraphEdge &&source);                  // move condtructor
+    GraphEdge &operator=(GraphEdge &&source);       // move assignment operator
 
     // getter / setter
     int GetID() { return _id; }

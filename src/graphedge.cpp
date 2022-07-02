@@ -20,3 +20,68 @@ void GraphEdge::AddToken(std::string token)
 {
     _keywords.push_back(token);
 }
+
+GraphEdge::~GraphEdge()
+{
+    _id = -1;
+    _childNode = nullptr;
+    _parentNode = nullptr;
+    _keywords.clear();
+}
+
+//Copy constructor
+GraphEdge::GraphEdge(const GraphEdge &source)
+{
+    std::cout << "GraphEdge Copy" << std::endl;
+    _childNode = source._childNode;
+    _parentNode = source._parentNode;
+    _id = source._id;
+    _keywords = source._keywords;
+}
+
+GraphEdge &GraphEdge::operator=(const GraphEdge &source)
+{
+    std::cout << "GraphEdge Assignment" << std::endl;
+    if(this == &source)
+        return *this;
+
+    _childNode = source._childNode;
+    _parentNode = source._parentNode;
+    _id = source._id;
+    _keywords = source._keywords;
+
+    return *this;
+}
+
+GraphEdge::GraphEdge(GraphEdge &&source)
+{
+    std::cout << "GraphEdge Move" << std::endl;
+    _childNode = source._childNode;
+    _parentNode = source._parentNode;
+    _id = source._id;
+    _keywords = source._keywords;
+
+    source._childNode = nullptr;
+    source._parentNode = nullptr;
+    source._id = -1;
+    source._keywords.clear();
+}
+
+GraphEdge &GraphEdge::operator=(GraphEdge &&source)
+{
+    std::cout << "GraphEdge Move Assignment" << std::endl;
+    if(this == &source)
+        return *this;
+    
+    _childNode = source._childNode;
+    _parentNode = source._parentNode;
+    _id = source._id;
+    _keywords = source._keywords;
+
+    source._childNode = nullptr;
+    source._parentNode = nullptr;
+    source._id = -1;
+    source._keywords.clear();
+
+    return *this;
+}

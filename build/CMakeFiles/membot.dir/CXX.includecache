@@ -55,11 +55,17 @@ vector
 -
 string
 -
+memory
+-
+iostream
+-
 
 /home/workspace/CppND-Memory-Management-Chatbot/src/graphnode.h
 vector
 -
 string
+-
+memory
 -
 chatbot.h
 /home/workspace/CppND-Memory-Management-Chatbot/src/chatbot.h
