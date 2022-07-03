@@ -51,6 +51,7 @@ ChatBot::ChatBot(const ChatBot &source)
     std::cout << "ChatBot Copy Constructor" << std::endl;
 
     _chatLogic = source._chatLogic;
+    // needs handle for communication between chatbot and chatlogic
     _chatLogic->SetChatbotHandle(this);
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
@@ -70,7 +71,7 @@ ChatBot &ChatBot::operator= (const ChatBot &source)
         return *this;
 
     //Delete the already assigned image 
-    //The object will be created using Copy Constructor or Constructor with Memory allocation
+    //The object will have been created using Copy Constructor or Constructor and thus Memory allocation is guaranteed
     delete _image;
 
     _chatLogic = source._chatLogic;
@@ -91,10 +92,10 @@ ChatBot::ChatBot(ChatBot &&source)
     std::cout << "ChatBot Move Constructor" << std::endl;
     //Re-direct all handles
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
     _rootNode = source._rootNode;
     _currentNode = source._currentNode;
-    _chatLogic->SetChatbotHandle(this);
-
+    
     //Re-direct to the source image
     _image = source._image;
 
@@ -111,9 +112,7 @@ ChatBot &ChatBot::operator=(ChatBot &&source)
 
     if(this == &source)
         return *this;
-    
-    //std::cout << "Source address" << &source << std::endl;
-    
+        
     delete _image;
 
     //Re-direct all handles

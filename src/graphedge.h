@@ -23,6 +23,8 @@ private:
 public:
     // constructor / desctructor
     GraphEdge(int id);
+
+    //rule of five implemented as it is used to transfer ownership to GraphNode
     ~GraphEdge();                                   // destructor
     GraphEdge(const GraphEdge &source);             // copy constructor
     GraphEdge &operator=(const GraphEdge &source);  // assignment operator

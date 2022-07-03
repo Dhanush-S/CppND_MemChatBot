@@ -17,12 +17,10 @@ private:
     ////
 
     // data handles (owned)
-    //std::vector<GraphNode *> _nodes;
+    // a vector of unique ptr to GraphNode
     std::vector<std::unique_ptr<GraphNode>> _nodes;
 
-    // no need to have edges anymore
-    //std::vector<std::unique_ptr<GraphEdge> _edges;
-    // std::vector<GraphEdge *> _edges;
+    // no need to have GraphEdges anymore
     
     ////
     //// EOF STUDENT CODE

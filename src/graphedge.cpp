@@ -21,6 +21,7 @@ void GraphEdge::AddToken(std::string token)
     _keywords.push_back(token);
 }
 
+// destructor
 GraphEdge::~GraphEdge()
 {
     _id = -1;
@@ -29,7 +30,7 @@ GraphEdge::~GraphEdge()
     _keywords.clear();
 }
 
-//Copy constructor
+// copy constructor
 GraphEdge::GraphEdge(const GraphEdge &source)
 {
     std::cout << "GraphEdge Copy" << std::endl;
@@ -39,6 +40,7 @@ GraphEdge::GraphEdge(const GraphEdge &source)
     _keywords = source._keywords;
 }
 
+// assignment operator
 GraphEdge &GraphEdge::operator=(const GraphEdge &source)
 {
     std::cout << "GraphEdge Assignment" << std::endl;
@@ -53,6 +55,7 @@ GraphEdge &GraphEdge::operator=(const GraphEdge &source)
     return *this;
 }
 
+// move contructor
 GraphEdge::GraphEdge(GraphEdge &&source)
 {
     std::cout << "GraphEdge Move" << std::endl;
@@ -67,6 +70,7 @@ GraphEdge::GraphEdge(GraphEdge &&source)
     source._keywords.clear();
 }
 
+// move assignment operator
 GraphEdge &GraphEdge::operator=(GraphEdge &&source)
 {
     std::cout << "GraphEdge Move Assignment" << std::endl;
